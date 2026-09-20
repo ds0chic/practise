@@ -12,3 +12,7 @@
 go test ./...
 go vet ./...
 ```
+
+## 笔记
+
+- [编写时的笔记（飞书）](https://iqeubg8au73.feishu.cn/wiki/Arkewkep5ibzvpkX6JzcxZVonvb?from=from_copylink)
