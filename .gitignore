@@ -1,0 +1,29 @@
+# Binaries
+*.exe
+*.dll
+*.so
+*.dylib
+practise
+
+# Build / test
+*.test
+*.out
+/dist/
+/bin/
+
+# Go workspace
+go.work.sum
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# git credentials - never commit tokens
+.git-credentials
