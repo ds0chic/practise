@@ -12,8 +12,3 @@
 go test ./...
 go vet ./...
 ```
-
-## 记录习惯
-
-- 一个练习一个 commit，message 写清楚练了啥
-- 能跑通再推 `main`
