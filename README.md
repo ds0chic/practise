@@ -61,14 +61,6 @@ go test ./...
 
 目前无单测，`go vet` 用于保证泛型签名可编译。
 
-## 路线图
-
-- [x] `Contains` / `Filter`
-- [x] `Find` / `Map` / `Foreach`
-- [x] `Count` / `CountBy` / `EveryBy`
-- [ ] `Reduce` / `Reject` / `Uniq`
-- [ ] `GroupBy` / `Keys` / `Values`
-
 ## 笔记
 
 - [编写时的笔记（飞书）](https://iqeubg8au73.feishu.cn/wiki/Arkewkep5ibzvpkX6JzcxZVonvb?from=from_copylink)
