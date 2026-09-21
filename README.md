@@ -8,6 +8,7 @@
 - `filter.go`：泛型 `Filter` 小练习
 - `find.go`：泛型 `Find` 小练习
 - `map.go`：泛型 `Map` 小练习
+- `foreach.go`：泛型 `Foreach` 小练习
 
 ## 跑法
 
