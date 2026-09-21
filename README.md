@@ -69,8 +69,6 @@ go test ./...
 - [ ] `Reduce` / `Reject` / `Uniq`
 - [ ] `GroupBy` / `Keys` / `Values`
 
-下一步建议先写 `Reduce`，它是聚合类函数的通用底座。
-
 ## 笔记
 
 - [编写时的笔记（飞书）](https://iqeubg8au73.feishu.cn/wiki/Arkewkep5ibzvpkX6JzcxZVonvb?from=from_copylink)
