@@ -11,6 +11,7 @@
 - `foreach.go`：泛型 `Foreach` 小练习
 - `count.go`：泛型 `Count` 小练习
 - `countby.go`：泛型 `CountBy` 小练习
+- `everyby.go`：泛型 `EveryBy` 小练习
 
 ## 跑法
 
