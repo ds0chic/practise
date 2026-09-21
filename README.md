@@ -2,8 +2,6 @@
 
 Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常用集合函数，熟悉 `any / comparable` 约束和 `func(value T, index int)` 谓词写法。
 
-本仓库函数均为最小实现，不追求性能和 `lo` 完全对齐，重点是手感。
-
 ## 已实现
 
 | 文件 | 函数签名 | 语义 |
