@@ -1,6 +1,6 @@
 # practise
 
-Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常用集合函数，熟悉 `any / comparable` 约束和 `func(value T, index int)` 谓词写法。
+Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常用集合函数。
 
 ## 已实现
 
