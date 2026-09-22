@@ -33,6 +33,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | --- | --- | --- | --- |
 | 3.1 | `chunk.go` | `Chunk[T any](values []T, size int) [][]T` | 按 size 切分为多块，size<=0 时 panic |
 | 3.2 | `flatten.go` | `Flatten[T any](values [][]T) []T` | 拍平一层 |
+| 3.3 | `take.go` | `Take[T any](values []T, count int) []T` | 取前 count 个，count<0 时 panic |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -113,6 +114,9 @@ practise.Chunk([]int{1, 2, 3, 4, 5}, 2)
 
 practise.Flatten([][]int{{1, 2}, {3, 4}, {5}})
 // []int{1, 2, 3, 4, 5}
+
+practise.Take([]int{1, 2, 3, 4}, 2)
+// []int{1, 2}
 ```
 
 ## 跑法
