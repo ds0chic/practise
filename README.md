@@ -27,7 +27,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 2.4 | `uniqby.go` | `UniqBy[T any, K comparable](values []T, key func(value T) K) []T` | 按 key 去重 |
 | 2.5 | `groupby.go` | `GroupBy[T any, K comparable](values []T, key func(value T) K) map[K][]T` | 按 key 分组 |
 
-约定：所有带下标的回调统一为 `func(value T, i int)`，`i` 为元素下标。
+约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
 ## 示例
 
