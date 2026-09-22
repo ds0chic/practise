@@ -2,7 +2,7 @@ package practise
 
 func Chunk[T any](chunk []T, chunkSize int) [][]T {
 	if chunkSize <= 0 {
-		return [][]T{}
+		panic("practise.Chunk: chunkSize must be greater than 0")
 	}
 	var chunks [][]T
 	for i := 0; i < len(chunk); i += chunkSize {
