@@ -24,6 +24,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 2.1 | `filtermap.go` | `FilterMap[T any, R any](values []T, mapper func(value T, i int) (R, bool)) []R` | 过滤+映射一次完成 |
 | 2.2 | `flatmap.go` | `Flatmap[T any, R any](values []T, mapper func(value T, i int) []R) []R` | 映射后拍平一层 |
 | 2.3 | `reduce.go` | `Reduce[T any, R any](values []T, reducer func(acc R, value T, i int) R, initial R) R` | 聚合为单个值 |
+| 2.4 | `uniqby.go` | `UniqBy[T any, K comparable](values []T, key func(value T) K) []T` | 按 key 去重 |
 
 约定：所有带下标的回调统一为 `func(value T, i int)`，`i` 为元素下标。
 
@@ -84,6 +85,11 @@ practise.Reduce([]int{1, 2, 3, 4}, func(acc int, v int, _ int) int {
     return acc + v
 }, 0)
 // 10
+
+practise.UniqBy([]string{"a", "aa", "aaa", "a", "bb"}, func(s string) int {
+    return len(s)
+})
+// []string{"a", "aa", "aaa"}
 ```
 
 ## 跑法
