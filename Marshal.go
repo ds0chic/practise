@@ -7,8 +7,8 @@ import (
 
 func main() {
 	type User struct {
-		Name string
-		Age  int
+		Name string `json:"your name"`
+		Age  int    `json:"your age"`
 	}
 	user := User{
 		Name: "Tom",

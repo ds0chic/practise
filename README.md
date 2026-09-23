@@ -139,7 +139,7 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 ```go
 // Marshal.go main() JSON 序列化 demo
-// 输出 {"Name":"Tom","Age":22}
+// 输出 {"your name":"Tom","your age":22}
 ```
 
 ## 跑法
