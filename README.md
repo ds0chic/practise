@@ -42,6 +42,12 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 4.1 | `keys.go` | `Keys[K comparable, V any](m map[K]V) []K` | 取 map 所有 key |
 | 4.2 | `keyby.go` | `KeyBy[T any, K comparable](values []T, key func(value T) K) map[K]T` | 按 key 转为 map |
 
+### 5. 其他示例
+
+| 编号 | 文件 | 函数签名 | 语义 |
+| --- | --- | --- | --- |
+| 5.1 | `Marshal.go` | `main()` | JSON 序列化 demo |
+
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
 ## 示例
@@ -136,6 +142,13 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
     return len(s)
 })
 // map[int]string{1: "a", 2: "aa", 3: "aaa"}
+```
+
+### 5. 其他示例
+
+```go
+// Marshal.go main() JSON 序列化 demo
+// 输出 {"Name":"Tom","Age":22}
 ```
 
 ## 跑法
