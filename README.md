@@ -47,6 +47,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 4.2.1 | `Unmarshal.go` | `UnmarshalDemo()` | JSON 反序列化 demo |
 | 4.2.2 | `UnmarshalSlice.go` | `UnmarshalSliceDemo()` | []User 反序列化 demo |
 | 4.2.3 | `UnmarshalMap.go` | `UnmarshalMapDemo()` | []map 反序列化 demo |
+| 4.2.4 | `UnmarshalNested.go` | `UnmarshalNestedDemo()` | 嵌套结构反序列化 demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -160,6 +161,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // UnmarshalMap.go UnmarshalMapDemo() []map 反序列化 demo
 // 输出 [map[age:22 name:Tom] map[age:25 name:Bob]] / Bob
+
+// UnmarshalNested.go UnmarshalNestedDemo() 嵌套结构反序列化 demo
+// 输出 {Tom 22 {Shanghai Nanjing Road}} / Shanghai
 ```
 
 ## 跑法
