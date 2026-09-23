@@ -41,9 +41,9 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
-| 4.1 | `Marshal.go` | `MarshalDemo()` | JSON 序列化 demo |
-| 4.2 | `MarshalTag.go` | `MarshalTagDemo()` | struct tag 改字段名 demo |
-| 4.3 | `MarshalOmitEmpty.go` | `MarshalOmitEmptyDemo()` | omitempty 省略零值 demo |
+| 4.1.1 | `Marshal.go` | `MarshalDemo()` | JSON 序列化 demo |
+| 4.1.2 | `MarshalTag.go` | `MarshalTagDemo()` | struct tag 改字段名 demo |
+| 4.1.3 | `MarshalOmitEmpty.go` | `MarshalOmitEmptyDemo()` | omitempty 省略零值 demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
