@@ -27,26 +27,21 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 2.4 | `uniqby.go` | `UniqBy[T any, K comparable](values []T, key func(value T) K) []T` | 按 key 去重 |
 | 2.5 | `groupby.go` | `GroupBy[T any, K comparable](values []T, key func(value T) K) map[K][]T` | 按 key 分组 |
 
-### 3. Slice：分块 / 切分
+### 3. Slice / Map：分块 / 切分 / 转换
 
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
 | 3.1 | `chunk.go` | `Chunk[T any](values []T, size int) [][]T` | 按 size 切分为多块，size<=0 时 panic |
 | 3.2 | `flatten.go` | `Flatten[T any](values [][]T) []T` | 拍平一层 |
 | 3.3 | `take.go` | `Take[T any](values []T, count int) []T` | 取前 count 个 |
+| 3.4 | `keys.go` | `Keys[K comparable, V any](m map[K]V) []K` | 取 map 所有 key |
+| 3.5 | `keyby.go` | `KeyBy[T any, K comparable](values []T, key func(value T) K) map[K]T` | 按 key 转为 map |
 
-### 4. Map
-
-| 编号 | 文件 | 函数签名 | 语义 |
-| --- | --- | --- | --- |
-| 4.1 | `keys.go` | `Keys[K comparable, V any](m map[K]V) []K` | 取 map 所有 key |
-| 4.2 | `keyby.go` | `KeyBy[T any, K comparable](values []T, key func(value T) K) map[K]T` | 按 key 转为 map |
-
-### 5. 其他示例
+### 4. Day1 encoding/json
 
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
-| 5.1 | `Marshal.go` | `main()` | JSON 序列化 demo |
+| 4.1 | `Marshal.go` | `main()` | JSON 序列化 demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -119,7 +114,7 @@ practise.GroupBy([]int{1, 2, 3, 4}, func(v int) int {
 // map[int][]int{1: {1, 3}, 0: {2, 4}}
 ```
 
-### 3. Slice：分块 / 切分
+### 3. Slice / Map：分块 / 切分 / 转换
 
 ```go
 practise.Chunk([]int{1, 2, 3, 4, 5}, 2)
@@ -130,11 +125,7 @@ practise.Flatten([][]int{{1, 2}, {3, 4}, {5}})
 
 practise.Take([]int{1, 2, 3, 4}, 2)
 // []int{1, 2}
-```
 
-### 4. Map
-
-```go
 practise.Keys(map[string]int{"a": 1, "b": 2})
 // []string{"a", "b"}（顺序随机）
 
@@ -144,7 +135,7 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // map[int]string{1: "a", 2: "aa", 3: "aaa"}
 ```
 
-### 5. 其他示例
+### 4. Day1 encoding/json
 
 ```go
 // Marshal.go main() JSON 序列化 demo
