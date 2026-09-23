@@ -37,7 +37,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 3.4 | `keys.go` | `Keys[K comparable, V any](m map[K]V) []K` | 取 map 所有 key |
 | 3.5 | `keyby.go` | `KeyBy[T any, K comparable](values []T, key func(value T) K) map[K]T` | 按 key 转为 map |
 
-### 4. Day1 encoding/json
+### 4. encoding/json
 
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
@@ -135,7 +135,7 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // map[int]string{1: "a", 2: "aa", 3: "aaa"}
 ```
 
-### 4. Day1 encoding/json
+### 4. encoding/json
 
 ```go
 // Marshal.go main() JSON 序列化 demo
