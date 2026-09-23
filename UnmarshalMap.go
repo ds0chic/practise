@@ -13,7 +13,6 @@ func UnmarshalMapDemo() {
 		fmt.Println(err)
 		return
 	}
-
 	fmt.Println(user)
 	fmt.Println(user[1]["name"])
 }
