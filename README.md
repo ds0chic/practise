@@ -56,6 +56,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
 | 5.1.1 | `Background.go` | `BackgroundDemo()` | Background 空 context demo |
+| 5.1.2 | `Cancel.go` | `CancelDemo()` | WithCancel 取消 goroutine demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -185,6 +186,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 ```go
 // Background.go BackgroundDemo() Background 空 context demo
 // 输出 context.Background
+
+// Cancel.go CancelDemo() WithCancel 取消 goroutine demo
+// 输出 任务运行 x3 / 任务结束
 ```
 
 ## 跑法
