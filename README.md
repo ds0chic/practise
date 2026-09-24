@@ -58,6 +58,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 5.1.1 | `Background.go` | `BackgroundDemo()` | Background 空 context demo |
 | 5.1.2 | `Cancel.go` | `CancelDemo()` | WithCancel 取消 goroutine demo |
 | 5.1.3 | `Timeout.go` | `TimeoutDemo()` | WithTimeout 超时中止 demo |
+| 5.1.4 | `Deadline.go` | `DeadlineDemo()` | WithDeadline 到期中止 demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -192,6 +193,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // 输出 任务运行 x3 / 任务结束
 
 // Timeout.go TimeoutDemo() WithTimeout 超时中止 demo
+// 输出 任务运行中 x3 / context deadline exceeded / 任务中止
+
+// Deadline.go DeadlineDemo() WithDeadline 到期中止 demo
 // 输出 任务运行中 x3 / context deadline exceeded / 任务中止
 ```
 
