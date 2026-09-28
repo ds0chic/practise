@@ -70,6 +70,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 6.1.1 | `Server.go` | `ServerDemo()` | GET / 返回 Hello World demo |
 | 6.2.1 | `User.go` | `UserDemo()` | 打印 Method/Path/UA demo，:8081/user |
 | 6.3.1 | `UserStatus.go` | `UserStatusDemo()` | 404/200 状态码 demo，:8082/user |
+| 6.4.1 | `UserMethod.go` | `UserMethodDemo()` | GET/POST/405 方法分支 demo，:8083/user |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -230,6 +231,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // UserStatus.go UserStatusDemo() 404/200 状态码 demo
 // 浏览器访问 http://localhost:8082/user 输出 user not found（404）
+
+// UserMethod.go UserMethodDemo() GET/POST/405 方法分支 demo
+// 浏览器 GET http://localhost:8083/user 输出 获取 user 信息
 ```
 
 ## 跑法
@@ -246,6 +250,7 @@ go vet ./...
 go run ./cmd/demo server      # :8080 / -> Hello World
 go run ./cmd/demo user        # :8081 /user -> request received
 go run ./cmd/demo userstatus  # :8082 /user -> user not found（404）
+go run ./cmd/demo usermethod  # :8083 /user -> 获取 user 信息（GET）
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。

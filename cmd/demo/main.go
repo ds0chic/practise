@@ -3,6 +3,7 @@
 //	go run ./cmd/demo server	# 跑 ServerDemo，浏览器看 http://localhost:8080/
 //	go run ./cmd/demo user		# 跑 UserDemo，浏览器看 http://localhost:8081/user
 //	go run ./cmd/demo userstatus	# 跑 UserStatusDemo，浏览器看 http://localhost:8082/user
+//	go run ./cmd/demo usermethod	# 跑 UserMethodDemo，浏览器看 http://localhost:8083/user
 package main
 
 import (
@@ -13,10 +14,11 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
+		fmt.Println("  usermethod -> practise.UserMethodDemo() :8083 /user")
 		return
 	}
 	switch os.Args[1] {
@@ -26,6 +28,8 @@ func main() {
 		practise.UserDemo()
 	case "userstatus":
 		practise.UserStatusDemo()
+	case "usermethod":
+		practise.UserMethodDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
