@@ -243,7 +243,16 @@ go vet ./...
 go test ./...
 ```
 
-目前无单测，`go vet` 用于保证泛型签名可编译。
+`go vet` 保证泛型签名可编译，`go test` 跑 httptest 单测（不占端口）。
+
+### 本地看 http 网页实际输出
+
+```bash
+go run ./cmd/demo server  # :8080 / -> Hello World
+go run ./cmd/demo info    # :8081 /info -> request received
+```
+
+浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
 
 ## 笔记
 
