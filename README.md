@@ -63,6 +63,12 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 5.2.2 | `ParentChild.go` | `ParentChildDemo()` | 父取消传播到子 demo |
 | 5.2.3 | `TaskChain.go` | `TaskChainDemo()` | TaskA 调 TaskB 取消传递 demo |
 
+### 6. net/http 服务端
+
+| 编号 | 文件 | 函数签名 | 语义 |
+| --- | --- | --- | --- |
+| 6.1.1 | `Server.go` | `ServerDemo()` | GET / 返回 Hello World demo |
+
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
 ## 示例
@@ -209,6 +215,13 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // TaskChain.go TaskChainDemo() TaskA 调 TaskB 取消传递 demo
 // 输出 TaskA 开始 / TaskB 正在运行 x3 / TaskB 收到取消信号 / context canceled
+```
+
+### 6. net/http 服务端
+
+```go
+// Server.go ServerDemo() GET / 返回 Hello World demo
+// 浏览器访问 http://localhost:8080/ 输出 Hello World
 ```
 
 ## 跑法
