@@ -69,8 +69,8 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | --- | --- | --- | --- |
 | 6.1.1 | `Server.go` | `ServerDemo()` | GET / 返回 Hello World demo |
 | 6.1.2 | `Server_test.go` | `TestHelloHandler` | httptest 单测，不占端口 |
-| 6.2.1 | `RequestInfo.go` | `RequestInfoDemo()` | 打印 Method/Path/UA demo，:8081/info |
-| 6.2.2 | `RequestInfo_test.go` | `TestRequestInfoHandler` | httptest 单测，不占端口 |
+| 6.2.1 | `User.go` | `UserDemo()` | 打印 Method/Path/UA demo，:8081/user |
+| 6.2.2 | `User_test.go` | `TestUserHandler` | httptest 单测，不占端口 |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -229,10 +229,10 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // Server_test.go TestHelloHandler httptest 单测，不占端口
 // go test ./... 通过
 
-// RequestInfo.go RequestInfoDemo() 打印 Method/Path/UA demo
-// 浏览器访问 http://localhost:8081/info，控制台输出 Method/Path/UA
+// User.go UserDemo() 打印 Method/Path/UA demo
+// 浏览器访问 http://localhost:8081/user，控制台输出 Method/Path/UA
 
-// RequestInfo_test.go TestRequestInfoHandler httptest 单测，不占端口
+// User_test.go TestUserHandler httptest 单测，不占端口
 // go test ./... 通过
 ```
 
@@ -249,7 +249,7 @@ go test ./...
 
 ```bash
 go run ./cmd/demo server  # :8080 / -> Hello World
-go run ./cmd/demo info    # :8081 /info -> request received
+go run ./cmd/demo user    # :8081 /user -> request received
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。

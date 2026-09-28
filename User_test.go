@@ -5,12 +5,12 @@ import (
 	"testing"
 )
 
-func TestRequestInfoHandler(t *testing.T) {
-	req := httptest.NewRequest("GET", "/info", nil)
+func TestUserHandler(t *testing.T) {
+	req := httptest.NewRequest("GET", "/user", nil)
 	req.Header.Set("User-Agent", "GoTest/1.0")
 	rec := httptest.NewRecorder()
 
-	requestInfoHandler(rec, req)
+	userHandler(rec, req)
 
 	if rec.Code != 200 {
 		t.Fatalf("want status 200, got %d", rec.Code)
