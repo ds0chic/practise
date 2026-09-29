@@ -63,7 +63,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 5.2.2 | `ParentChild.go` | `ParentChildDemo()` | 父取消传播到子 demo |
 | 5.2.3 | `TaskChain.go` | `TaskChainDemo()` | TaskA 调 TaskB 取消传递 demo |
 
-### 6. net/http 服务端
+### 6. net/http
 
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
@@ -74,13 +74,8 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 6.5.1 | `UserAuth.go` | `UserAuthDemo()` | 打印 UA/Authorization + 回 JSON demo，:8084/user |
 | 6.6.1 | `UserBody.go` | `UserBodyDemo()` | 读 Body 打印 + 回收到 demo，:8085/user |
 | 6.7.1 | `UserJSON.go` | `UserJSONDemo()` | POST JSON 解析回显 demo，:8086/user |
-
-### 7. net/http 客户端
-
-| 编号 | 文件 | 函数签名 | 语义 |
-| --- | --- | --- | --- |
-| 7.1.1 | `ClientGet.go` | `ClientGetDemo()` | GET 拉页面 + 打印 Status/Body demo |
-| 7.1.2 | `ClientTimeout.go` | `ClientTimeoutDemo()` | 带 3s context 超时 GET demo |
+| 6.8.1 | `ClientGet.go` | `ClientGetDemo()` | GET 拉页面 + 打印 Status/Body demo |
+| 6.8.2 | `ClientTimeout.go` | `ClientTimeoutDemo()` | 带 3s context 超时 GET demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -230,7 +225,7 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // 输出 TaskA 开始 / TaskB 正在运行 x3 / TaskB 收到取消信号 / context canceled
 ```
 
-### 6. net/http 服务端
+### 6. net/http
 
 ```go
 // Server.go ServerDemo() GET / 返回 Hello World demo
@@ -253,11 +248,7 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // UserJSON.go UserJSONDemo() POST JSON 解析回显 demo
 // POST {"name":"Tom","age":22} 到 http://localhost:8086/user，原样回显 JSON，错 JSON 回 400
-```
 
-### 7. net/http 客户端
-
-```go
 // ClientGet.go ClientGetDemo() GET 拉页面 + 打印 Status/Body demo
 // go run ./cmd/demo clientget，控制台输出 Status: 200 OK + example.com 页面
 
