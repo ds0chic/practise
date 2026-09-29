@@ -73,6 +73,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 6.4.1 | `UserMethod.go` | `UserMethodDemo()` | GET/POST/405 方法分支 demo，:8083/user |
 | 6.5.1 | `UserAuth.go` | `UserAuthDemo()` | 打印 UA/Authorization + 回 JSON demo，:8084/user |
 | 6.6.1 | `UserBody.go` | `UserBodyDemo()` | 读 Body 打印 + 回收到 demo，:8085/user |
+| 6.7.1 | `UserJSON.go` | `UserJSONDemo()` | POST JSON 解析回显 demo，:8086/user |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -242,6 +243,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // UserBody.go UserBodyDemo() 读 Body 打印 + 回收到 demo
 // POST body 到 http://localhost:8085/user，控制台打印 body，页面输出 收到数据
+
+// UserJSON.go UserJSONDemo() POST JSON 解析回显 demo
+// POST {"name":"Tom","age":22} 到 http://localhost:8086/user，原样回显 JSON，错 JSON 回 400
 ```
 
 ## 跑法
@@ -261,6 +265,7 @@ go run ./cmd/demo userstatus  # :8082 /user -> user not found（404）
 go run ./cmd/demo usermethod  # :8083 /user -> 获取 user 信息（GET）
 go run ./cmd/demo userauth    # :8084 /user -> {"status":"ok"}
 go run ./cmd/demo userbody    # :8085 /user -> 收到数据（POST 带 body）
+go run ./cmd/demo userjson    # :8086 /user -> 回显 POST 的 JSON
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
