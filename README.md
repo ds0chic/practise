@@ -75,6 +75,12 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 6.6.1 | `UserBody.go` | `UserBodyDemo()` | 读 Body 打印 + 回收到 demo，:8085/user |
 | 6.7.1 | `UserJSON.go` | `UserJSONDemo()` | POST JSON 解析回显 demo，:8086/user |
 
+### 7. net/http 客户端
+
+| 编号 | 文件 | 函数签名 | 语义 |
+| --- | --- | --- | --- |
+| 7.1.1 | `ClientGet.go` | `ClientGetDemo()` | GET 拉页面 + 打印 Status/Body demo |
+
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
 ## 示例
@@ -248,6 +254,13 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // POST {"name":"Tom","age":22} 到 http://localhost:8086/user，原样回显 JSON，错 JSON 回 400
 ```
 
+### 7. net/http 客户端
+
+```go
+// ClientGet.go ClientGetDemo() GET 拉页面 + 打印 Status/Body demo
+// go run ./cmd/demo clientget，控制台输出 Status: 200 OK + example.com 页面
+```
+
 ## 跑法
 
 ```bash
@@ -266,6 +279,7 @@ go run ./cmd/demo usermethod  # :8083 /user -> 获取 user 信息（GET）
 go run ./cmd/demo userauth    # :8084 /user -> {"status":"ok"}
 go run ./cmd/demo userbody    # :8085 /user -> 收到数据（POST 带 body）
 go run ./cmd/demo userjson    # :8086 /user -> 回显 POST 的 JSON
+go run ./cmd/demo clientget   # 控制台输出 Status + example.com 页面（client 类不用浏览器）
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。

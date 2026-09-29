@@ -1,4 +1,4 @@
-// 本地看各 server Demo 网页实际输出的统一入口，用法：
+// 本地看各 Demo 实际输出的统一入口，server 类用浏览器看，client 类直接看控制台：
 //
 //	go run ./cmd/demo server	# 跑 ServerDemo，浏览器看 http://localhost:8080/
 //	go run ./cmd/demo user		# 跑 UserDemo，浏览器看 http://localhost:8081/user
@@ -7,6 +7,7 @@
 //	go run ./cmd/demo userauth	# 跑 UserAuthDemo，浏览器看 http://localhost:8084/user
 //	go run ./cmd/demo userbody	# 跑 UserBodyDemo，curl POST 看 http://localhost:8085/user
 //	go run ./cmd/demo userjson	# 跑 UserJSONDemo，curl POST JSON 看 http://localhost:8086/user
+//	go run ./cmd/demo clientget	# 跑 ClientGetDemo，控制台直接输出
 package main
 
 import (
@@ -17,7 +18,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -25,6 +26,7 @@ func main() {
 		fmt.Println("  userauth   -> practise.UserAuthDemo()   :8084 /user")
 		fmt.Println("  userbody   -> practise.UserBodyDemo()   :8085 /user")
 		fmt.Println("  userjson   -> practise.UserJSONDemo()   :8086 /user")
+		fmt.Println("  clientget  -> practise.ClientGetDemo()  GET example.com，看控制台")
 		return
 	}
 	switch os.Args[1] {
@@ -42,6 +44,8 @@ func main() {
 		practise.UserBodyDemo()
 	case "userjson":
 		practise.UserJSONDemo()
+	case "clientget":
+		practise.ClientGetDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
