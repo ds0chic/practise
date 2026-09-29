@@ -8,6 +8,7 @@
 //	go run ./cmd/demo userbody	# 跑 UserBodyDemo，curl POST 看 http://localhost:8085/user
 //	go run ./cmd/demo userjson	# 跑 UserJSONDemo，curl POST JSON 看 http://localhost:8086/user
 //	go run ./cmd/demo clientget	# 跑 ClientGetDemo，控制台直接输出
+//	go run ./cmd/demo clienttimeout	# 跑 ClientTimeoutDemo，控制台直接输出
 package main
 
 import (
@@ -18,7 +19,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -27,6 +28,7 @@ func main() {
 		fmt.Println("  userbody   -> practise.UserBodyDemo()   :8085 /user")
 		fmt.Println("  userjson   -> practise.UserJSONDemo()   :8086 /user")
 		fmt.Println("  clientget  -> practise.ClientGetDemo()  GET example.com，看控制台")
+		fmt.Println("  clienttimeout -> practise.ClientTimeoutDemo() 带 3s 超时 GET，看控制台")
 		return
 	}
 	switch os.Args[1] {
@@ -46,6 +48,8 @@ func main() {
 		practise.UserJSONDemo()
 	case "clientget":
 		practise.ClientGetDemo()
+	case "clienttimeout":
+		practise.ClientTimeoutDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}

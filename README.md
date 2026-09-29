@@ -80,6 +80,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
 | 7.1.1 | `ClientGet.go` | `ClientGetDemo()` | GET 拉页面 + 打印 Status/Body demo |
+| 7.1.2 | `ClientTimeout.go` | `ClientTimeoutDemo()` | 带 3s context 超时 GET demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -259,6 +260,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 ```go
 // ClientGet.go ClientGetDemo() GET 拉页面 + 打印 Status/Body demo
 // go run ./cmd/demo clientget，控制台输出 Status: 200 OK + example.com 页面
+
+// ClientTimeout.go ClientTimeoutDemo() 带 3s context 超时 GET demo
+// go run ./cmd/demo clienttimeout，正常输出页面，超 3s 则打印 context deadline exceeded
 ```
 
 ## 跑法
@@ -280,6 +284,7 @@ go run ./cmd/demo userauth    # :8084 /user -> {"status":"ok"}
 go run ./cmd/demo userbody    # :8085 /user -> 收到数据（POST 带 body）
 go run ./cmd/demo userjson    # :8086 /user -> 回显 POST 的 JSON
 go run ./cmd/demo clientget   # 控制台输出 Status + example.com 页面（client 类不用浏览器）
+go run ./cmd/demo clienttimeout  # 同上，但请求带 3s context 超时
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
