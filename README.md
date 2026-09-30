@@ -82,6 +82,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
 | 7.1.1 | `GinUser.go` | `GinUserDemo()` | GET /user 回 JSON demo，:8087/user |
+| 7.1.2 | `GinQuery.go` | `GinQueryDemo()` | c.Query 取参回显 demo，:8088/user |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -268,6 +269,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // GinUser.go GinUserDemo() GET /user 回 JSON demo
 // 浏览器访问 http://localhost:8087/user 输出 {"age":22,"name":"tom"}
 // 需 gin 依赖：go get github.com/gin-gonic/gin（已进 go.mod/go.sum）
+
+// GinQuery.go GinQueryDemo() c.Query 取参回显 demo
+// 浏览器访问 http://localhost:8088/user?name=tom&age=22 输出 {"age":"22","name":"tom"}
 ```
 
 ## 跑法
@@ -291,6 +295,7 @@ go run ./cmd/demo userjson    # :8086 /user -> 回显 POST 的 JSON
 go run ./cmd/demo clientget   # 控制台输出 Status + example.com 页面（client 类不用浏览器）
 go run ./cmd/demo clienttimeout  # 同上，但请求带 3s context 超时
 go run ./cmd/demo ginuser     # :8087 /user -> {"age":22,"name":"tom"}
+go run ./cmd/demo ginquery    # :8088 /user?name=tom&age=22 -> 回显 query 参数
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
