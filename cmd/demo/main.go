@@ -11,6 +11,7 @@
 //	go run ./cmd/demo clienttimeout	# 跑 ClientTimeoutDemo，控制台直接输出
 //	go run ./cmd/demo ginuser	# 跑 GinUserDemo，浏览器看 http://localhost:8087/user
 //	go run ./cmd/demo ginquery	# 跑 GinQueryDemo，浏览器看 http://localhost:8088/user?name=tom&age=22
+//	go run ./cmd/demo ginparam	# 跑 GinParamDemo，浏览器看 http://localhost:8089/user/1
 package main
 
 import (
@@ -21,7 +22,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -33,6 +34,7 @@ func main() {
 		fmt.Println("  clienttimeout -> practise.ClientTimeoutDemo() 带 3s 超时 GET，看控制台")
 		fmt.Println("  ginuser -> practise.GinUserDemo() :8087 /user")
 		fmt.Println("  ginquery -> practise.GinQueryDemo() :8088 /user?name=&age=")
+		fmt.Println("  ginparam -> practise.GinParamDemo() :8089 /user/:id")
 		return
 	}
 	switch os.Args[1] {
@@ -58,6 +60,8 @@ func main() {
 		practise.GinUserDemo()
 	case "ginquery":
 		practise.GinQueryDemo()
+	case "ginparam":
+		practise.GinParamDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}

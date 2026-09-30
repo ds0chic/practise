@@ -83,6 +83,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | --- | --- | --- | --- |
 | 7.1.1 | `GinUser.go` | `GinUserDemo()` | GET /user 回 JSON demo，:8087/user |
 | 7.1.2 | `GinQuery.go` | `GinQueryDemo()` | c.Query 取参回显 demo，:8088/user |
+| 7.1.3 | `GinParam.go` | `GinParamDemo()` | c.Param 路径参数 demo，:8089/user/:id |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -272,6 +273,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // GinQuery.go GinQueryDemo() c.Query 取参回显 demo
 // 浏览器访问 http://localhost:8088/user?name=tom&age=22 输出 {"age":"22","name":"tom"}
+
+// GinParam.go GinParamDemo() c.Param 路径参数 demo
+// 浏览器访问 http://localhost:8089/user/1 输出 {"user_id":"1"}
 ```
 
 ## 跑法
@@ -296,6 +300,7 @@ go run ./cmd/demo clientget   # 控制台输出 Status + example.com 页面（cl
 go run ./cmd/demo clienttimeout  # 同上，但请求带 3s context 超时
 go run ./cmd/demo ginuser     # :8087 /user -> {"age":22,"name":"tom"}
 go run ./cmd/demo ginquery    # :8088 /user?name=tom&age=22 -> 回显 query 参数
+go run ./cmd/demo ginparam    # :8089 /user/1 -> {"user_id":"1"}
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
