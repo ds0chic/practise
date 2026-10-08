@@ -18,6 +18,9 @@ func AuthMiddleware(c *gin.Context) {
 		return
 	}
 
+	// 假设通过 token 查到了用户 ID
+	c.Set("userID", 1001)
+
 	c.Next()
 }
 
