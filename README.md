@@ -86,6 +86,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 7.1.3 | `GinParam.go` | `GinParamDemo()` | c.Param 路径参数 demo，:8089/user/:id |
 | 7.1.4 | `GinBind.go` | `GinBindDemo()` | ShouldBindJSON 绑定 demo，:8090/user |
 | 7.2.1 | `GinAuth.go` | `GinAuthDemo()` + `AuthMiddleware` | token 中间件 demo，:8091/user |
+| 7.2.2 | `GinGroup.go` | `GinGroupDemo()` | Group 分组 + 中间件复用 demo，:8092/api/... |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -284,6 +285,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // GinAuth.go GinAuthDemo() token 中间件 demo
 // 不带/错 token 访问 http://localhost:8091/user 回 401 {"error":"unauthorized"}，带 Authorization: 123456 回 Tom/22
+
+// GinGroup.go GinGroupDemo() Group 分组 + 中间件复用 demo
+// POST http://localhost:8092/api/public/login 回 login success；GET /api/user/info（带 token）回 Tom/22，不带回 401
 ```
 
 ## 跑法
@@ -311,6 +315,7 @@ go run ./cmd/demo ginquery    # :8088 /user?name=tom&age=22 -> 回显 query 参�
 go run ./cmd/demo ginparam    # :8089 /user/1 -> {"user_id":"1"}
 go run ./cmd/demo ginbind     # POST JSON 到 :8090 /user -> 绑定回显，错格式 400
 go run ./cmd/demo ginauth     # :8091 /user -> 带正确 token 回 Tom/22，否则 401
+go run ./cmd/demo gingroup    # :8092 /api/public/login + /api/user/info|order
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
