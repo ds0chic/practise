@@ -94,6 +94,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 编号 | 文件 | 函数签名 | 语义 |
 | --- | --- | --- | --- |
 | 8.1.1 | `DBPing.go` | `DBPingDemo()` | MySQL Open + Ping demo，需本地库 |
+| 8.1.2 | `DBQueryRow.go` | `DBQueryRowDemo()` | QueryRow 单行查询 + Scan demo，需 users 表 |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -306,6 +307,10 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // DBPing.go DBPingDemo() MySQL Open + Ping demo
 // go run ./cmd/demo dbping，库通了输出 数据库连接成功，否则 数据库连接失败 + err
 // 需 mysql 驱动：go get github.com/go-sql-driver/mysql（已进 go.mod/go.sum）
+
+// DBQueryRow.go DBQueryRowDemo() QueryRow 单行查询 + Scan demo
+// go run ./cmd/demo dbqueryrow，需 users 表有 id=1，输出 id name age（如 1 Tom 22）
+```
 ```
 
 ## 跑法
@@ -336,6 +341,7 @@ go run ./cmd/demo ginauth     # :8091 /user -> 带正确 token 回 Tom/22，否�
 go run ./cmd/demo gingroup    # :8092 /api/public/login + /api/user/info|order
 go run ./cmd/demo ginuserid   # :8093 /user/info 带 token -> user_id 1001，否则 401
 go run ./cmd/demo dbping      # 控制台输出 数据库连接成功/失败（需本地 MySQL 3306 有 test 库）
+go run ./cmd/demo dbqueryrow  # 控制台输出 id name age（需 users 表有 id=1）
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。

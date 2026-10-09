@@ -17,6 +17,7 @@
 //	go run ./cmd/demo gingroup	# 跑 GinGroupDemo，看 http://localhost:8092/api/...
 //	go run ./cmd/demo ginuserid	# 跑 GinUserIDDemo，curl 带 token 看 http://localhost:8093/user/info
 //	go run ./cmd/demo dbping	# 跑 DBPingDemo，需本地 MySQL，控制台直接输出
+//	go run ./cmd/demo dbqueryrow	# 跑 DBQueryRowDemo，需 users 表有 id=1，控制台直接输出
 package main
 
 import (
@@ -27,7 +28,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -45,6 +46,7 @@ func main() {
 		fmt.Println("  gingroup -> practise.GinGroupDemo() Group 分组 :8092 /api/...")
 		fmt.Println("  ginuserid -> practise.GinUserIDDemo() c.Set/c.Get 传值 :8093 /user/info")
 		fmt.Println("  dbping -> practise.DBPingDemo() MySQL Ping，看控制台（需本地库）")
+		fmt.Println("  dbqueryrow -> practise.DBQueryRowDemo() 单行查询+Scan，看控制台（需 users 表）")
 		return
 	}
 	switch os.Args[1] {
@@ -82,6 +84,8 @@ func main() {
 		practise.GinUserIDDemo()
 	case "dbping":
 		practise.DBPingDemo()
+	case "dbqueryrow":
+		practise.DBQueryRowDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
