@@ -89,6 +89,12 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 7.2.2 | `GinGroup.go` | `GinGroupDemo()` | Group 分组 + 中间件复用 demo，:8092/api/... |
 | 7.2.3 | `GinUserID.go` | `GinUserIDDemo()` | c.Set/c.Get 传 userID demo，:8093/user/info |
 
+### 8. database/sql
+
+| 编号 | 文件 | 函数签名 | 语义 |
+| --- | --- | --- | --- |
+| 8.1.1 | `DBPing.go` | `DBPingDemo()` | MySQL Open + Ping demo，需本地库 |
+
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
 ## 示例
@@ -294,6 +300,14 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 // GET http://localhost:8093/user/info（带 Authorization: 123456）回 {"name":"Tom","user_id":1001}，不带回 401
 ```
 
+### 8. database/sql
+
+```go
+// DBPing.go DBPingDemo() MySQL Open + Ping demo
+// go run ./cmd/demo dbping，库通了输出 数据库连接成功，否则 数据库连接失败 + err
+// 需 mysql 驱动：go get github.com/go-sql-driver/mysql（已进 go.mod/go.sum）
+```
+
 ## 跑法
 
 ```bash
@@ -321,6 +335,7 @@ go run ./cmd/demo ginbind     # POST JSON 到 :8090 /user -> 绑定回显，错�
 go run ./cmd/demo ginauth     # :8091 /user -> 带正确 token 回 Tom/22，否则 401
 go run ./cmd/demo gingroup    # :8092 /api/public/login + /api/user/info|order
 go run ./cmd/demo ginuserid   # :8093 /user/info 带 token -> user_id 1001，否则 401
+go run ./cmd/demo dbping      # 控制台输出 数据库连接成功/失败（需本地 MySQL 3306 有 test 库）
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
