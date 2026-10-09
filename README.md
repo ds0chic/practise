@@ -97,6 +97,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 8.1.2 | `DBQueryRow.go` | `DBQueryRowDemo()` | QueryRow 单行查询 + Scan demo，需 users 表 |
 | 8.1.3 | `DBQuery.go` | `DBQueryDemo()` | Query 全表查询 + Next/Scan 逐行 demo，需 users 表 |
 | 8.2.1 | `DBExec.go` | `DBExecDemo()` | 建表 + 新增 + 回 ID/影响行数 demo |
+| 8.2.2 | `DBUpdate.go` | `DBUpdateDemo()` | UPDATE 改 age + 回影响行数 demo |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -318,7 +319,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // DBExec.go DBExecDemo() 建表 + 新增 + 回 ID/影响行数 demo
 // go run ./cmd/demo dbexec，输出 新增用户ID + 影响行数（无 users 表会自动建）
-```
+
+// DBUpdate.go DBUpdateDemo() UPDATE 改 age + 回影响行数 demo
+// go run ./cmd/demo dbupdate，把 id=1 的 age 改成 23，输出 影响行数: 1
 ```
 
 ## 跑法
@@ -352,6 +355,7 @@ go run ./cmd/demo dbping      # 控制台输出 数据库连接成功/失败（�
 go run ./cmd/demo dbqueryrow  # 控制台输出 id name age（需 users 表有 id=1）
 go run ./cmd/demo dbquery     # 控制台逐行输出全表 id name age
 go run ./cmd/demo dbexec      # 控制台输出 新增用户ID + 影响行数
+go run ./cmd/demo dbupdate    # 控制台输出 影响行数: 1（id=1 的 age 改成 23）
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
