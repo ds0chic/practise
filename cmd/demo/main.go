@@ -19,6 +19,7 @@
 //	go run ./cmd/demo dbping	# 跑 DBPingDemo，需本地 MySQL，控制台直接输出
 //	go run ./cmd/demo dbqueryrow	# 跑 DBQueryRowDemo，需 users 表有 id=1，控制台直接输出
 //	go run ./cmd/demo dbquery	# 跑 DBQueryDemo，查全表逐行打印，控制台直接输出
+//	go run ./cmd/demo dbexec	# 跑 DBExecDemo，建表+新增+回 ID/影响行数，控制台直接输出
 package main
 
 import (
@@ -29,7 +30,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -49,6 +50,7 @@ func main() {
 		fmt.Println("  dbping -> practise.DBPingDemo() MySQL Ping，看控制台（需本地库）")
 		fmt.Println("  dbqueryrow -> practise.DBQueryRowDemo() 单行查询+Scan，看控制台（需 users 表）")
 		fmt.Println("  dbquery -> practise.DBQueryDemo() 全表查询+Next/Scan，看控制台（需 users 表）")
+		fmt.Println("  dbexec -> practise.DBExecDemo() 建表+新增+回ID/影响行数，看控制台")
 		return
 	}
 	switch os.Args[1] {
@@ -90,6 +92,8 @@ func main() {
 		practise.DBQueryRowDemo()
 	case "dbquery":
 		practise.DBQueryDemo()
+	case "dbexec":
+		practise.DBExecDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
