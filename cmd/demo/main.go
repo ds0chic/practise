@@ -21,6 +21,7 @@
 //	go run ./cmd/demo dbquery	# 跑 DBQueryDemo，查全表逐行打印，控制台直接输出
 //	go run ./cmd/demo dbexec	# 跑 DBExecDemo，建表+新增+回 ID/影响行数，控制台直接输出
 //	go run ./cmd/demo dbupdate	# 跑 DBUpdateDemo，改 id=1 的 age，控制台直接输出
+//	go run ./cmd/demo dbdelete	# 跑 DBDeleteDemo，删 id=3，控制台直接输出
 package main
 
 import (
@@ -31,7 +32,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -53,6 +54,7 @@ func main() {
 		fmt.Println("  dbquery -> practise.DBQueryDemo() 全表查询+Next/Scan，看控制台（需 users 表）")
 		fmt.Println("  dbexec -> practise.DBExecDemo() 建表+新增+回ID/影响行数，看控制台")
 		fmt.Println("  dbupdate -> practise.DBUpdateDemo() 改 id=1 age=23，看控制台")
+		fmt.Println("  dbdelete -> practise.DBDeleteDemo() 删 id=3，看控制台")
 		return
 	}
 	switch os.Args[1] {
@@ -98,6 +100,8 @@ func main() {
 		practise.DBExecDemo()
 	case "dbupdate":
 		practise.DBUpdateDemo()
+	case "dbdelete":
+		practise.DBDeleteDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
