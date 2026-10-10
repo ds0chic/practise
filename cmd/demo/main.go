@@ -23,6 +23,7 @@
 //	go run ./cmd/demo dbupdate	# 跑 DBUpdateDemo，改 id=1 的 age，控制台直接输出
 //	go run ./cmd/demo dbdelete	# 跑 DBDeleteDemo，删 id=3，控制台直接输出
 //	go run ./cmd/demo gindbuser	# 跑 GinDBUserDemo，浏览器看 http://localhost:8094/user/1
+//	go run ./cmd/demo gindbinsert	# 跑 GinDBInsertDemo，curl POST JSON 看 http://localhost:8095/user
 package main
 
 import (
@@ -33,7 +34,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -57,6 +58,7 @@ func main() {
 		fmt.Println("  dbupdate -> practise.DBUpdateDemo() 改 id=1 age=23，看控制台")
 		fmt.Println("  dbdelete -> practise.DBDeleteDemo() 删 id=3，看控制台")
 		fmt.Println("  gindbuser -> practise.GinDBUserDemo() Gin+MySQL 查用户 :8094 /user/:id")
+		fmt.Println("  gindbinsert -> practise.GinDBInsertDemo() Gin+MySQL 新增用户 :8095 /user (POST)")
 		return
 	}
 	switch os.Args[1] {
@@ -106,6 +108,8 @@ func main() {
 		practise.DBDeleteDemo()
 	case "gindbuser":
 		practise.GinDBUserDemo()
+	case "gindbinsert":
+		practise.GinDBInsertDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
