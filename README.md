@@ -90,6 +90,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 7.2.3 | `GinUserID.go` | `GinUserIDDemo()` | c.Set/c.Get 传 userID demo，:8093/user/info |
 | 7.3.1 | `GinDBUser.go` | `GinDBUserDemo()` | Gin + MySQL 查用户 demo，:8094/user/:id |
 | 7.3.2 | `GinDBInsert.go` | `GinDBInsertDemo()` | Gin + MySQL 新增用户 demo，:8095/user |
+| 7.3.3 | `GinDBUpdate.go` | `GinDBUpdateDemo()` | Gin + MySQL 改用户 demo，:8096/user/:id |
 
 ### 8. database/sql
 
@@ -311,6 +312,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // GinDBInsert.go GinDBInsertDemo() Gin + MySQL 新增用户 demo
 // POST {"name":"Lily","age":20} 到 http://localhost:8095/user -> 201 + {"id":新ID,"name":"Lily","age":20}；错格式回 400
+
+// GinDBUpdate.go GinDBUpdateDemo() Gin + MySQL 改用户 demo
+// PUT {"name":"Bob","age":25} 到 http://localhost:8096/user/1 -> 200 + {"user":{...},"affected":1}；id 非法回 400；错格式回 400（需本地 MySQL + users 表）
 ```
 
 ### 8. database/sql
@@ -372,6 +376,7 @@ go run ./cmd/demo dbupdate    # 控制台输出 影响行数: 1（id=1 的 age �
 go run ./cmd/demo dbdelete    # 控制台输出 删除行数（删 id=3）
 go run ./cmd/demo gindbuser   # :8094 /user/1 -> 查库回用户 JSON（需 MySQL）
 go run ./cmd/demo gindbinsert  # POST JSON 到 :8095 /user -> 入库并回 201 + 新用户
+go run ./cmd/demo gindbupdate  # PUT JSON 到 :8096 /user/1 -> 改库并回 user + affected
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
