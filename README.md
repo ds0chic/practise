@@ -91,6 +91,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 7.3.1 | `GinDBUser.go` | `GinDBUserDemo()` | Gin + MySQL 查用户 demo，:8094/user/:id |
 | 7.3.2 | `GinDBInsert.go` | `GinDBInsertDemo()` | Gin + MySQL 新增用户 demo，:8095/user |
 | 7.3.3 | `GinDBUpdate.go` | `GinDBUpdateDemo()` | Gin + MySQL 改用户 demo，:8096/user/:id |
+| 7.3.4 | `GinDBDelete.go` | `GinDBDeleteDemo()` | Gin + MySQL 删用户 demo，:8097/user/:id |
 
 ### 8. database/sql
 
@@ -315,6 +316,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // GinDBUpdate.go GinDBUpdateDemo() Gin + MySQL 改用户 demo
 // PUT {"name":"Bob","age":25} 到 http://localhost:8096/user/1 -> 200 + {"user":{...},"affected":1}；id 非法回 400；错格式回 400（需本地 MySQL + users 表）
+
+// GinDBDelete.go GinDBDeleteDemo() Gin + MySQL 删用户 demo
+// DELETE http://localhost:8097/user/1 -> 200 {"message":"删除成功"}；id 非数字回 400；不存在回 404（需本地 MySQL + users 表）
 ```
 
 ### 8. database/sql
@@ -377,6 +381,7 @@ go run ./cmd/demo dbdelete    # 控制台输出 删除行数（删 id=3）
 go run ./cmd/demo gindbuser   # :8094 /user/1 -> 查库回用户 JSON（需 MySQL）
 go run ./cmd/demo gindbinsert  # POST JSON 到 :8095 /user -> 入库并回 201 + 新用户
 go run ./cmd/demo gindbupdate  # PUT JSON 到 :8096 /user/1 -> 改库并回 user + affected
+go run ./cmd/demo gindbdelete  # DELETE :8097 /user/1 -> 删除成功 / 404 用户不存在
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。

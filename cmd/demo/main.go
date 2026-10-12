@@ -25,6 +25,7 @@
 //	go run ./cmd/demo gindbuser	# 跑 GinDBUserDemo，浏览器看 http://localhost:8094/user/1
 //	go run ./cmd/demo gindbinsert	# 跑 GinDBInsertDemo，curl POST JSON 看 http://localhost:8095/user
 //	go run ./cmd/demo gindbupdate	# 跑 GinDBUpdateDemo，curl PUT JSON 看 http://localhost:8096/user/1
+//	go run ./cmd/demo gindbdelete	# 跑 GinDBDeleteDemo，curl DELETE 看 http://localhost:8097/user/1
 package main
 
 import (
@@ -35,7 +36,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate|gindbdelete]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -61,6 +62,7 @@ func main() {
 		fmt.Println("  gindbuser -> practise.GinDBUserDemo() Gin+MySQL 查用户 :8094 /user/:id")
 		fmt.Println("  gindbinsert -> practise.GinDBInsertDemo() Gin+MySQL 新增用户 :8095 /user (POST)")
 		fmt.Println("  gindbupdate -> practise.GinDBUpdateDemo() Gin+MySQL 改用户 :8096 /user/:id (PUT)")
+		fmt.Println("  gindbdelete -> practise.GinDBDeleteDemo() Gin+MySQL 删用户 :8097 /user/:id (DELETE)")
 		return
 	}
 	switch os.Args[1] {
@@ -114,6 +116,8 @@ func main() {
 		practise.GinDBInsertDemo()
 	case "gindbupdate":
 		practise.GinDBUpdateDemo()
+	case "gindbdelete":
+		practise.GinDBDeleteDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
