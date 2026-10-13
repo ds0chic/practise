@@ -27,6 +27,7 @@
 //	go run ./cmd/demo gindbupdate	# 跑 GinDBUpdateDemo，curl PUT JSON 看 http://localhost:8096/user/1
 //	go run ./cmd/demo gindbdelete	# 跑 GinDBDeleteDemo，curl DELETE 看 http://localhost:8097/user/1
 //	go run ./cmd/demo ormcreate	# 跑 OrmCreateDemo，需本地 MySQL，控制台直接输出
+//	go run ./cmd/demo ormquery	# 跑 OrmQueryDemo，First/Find/Where 查询，控制台直接输出
 package main
 
 import (
@@ -37,7 +38,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate|gindbdelete|ormcreate]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate|gindbdelete|ormcreate|ormquery]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -65,6 +66,7 @@ func main() {
 		fmt.Println("  gindbupdate -> practise.GinDBUpdateDemo() Gin+MySQL 改用户 :8096 /user/:id (PUT)")
 		fmt.Println("  gindbdelete -> practise.GinDBDeleteDemo() Gin+MySQL 删用户 :8097 /user/:id (DELETE)")
 		fmt.Println("  ormcreate -> practise.OrmCreateDemo() GORM 建表+新增，看控制台（需本地库）")
+		fmt.Println("  ormquery -> practise.OrmQueryDemo() GORM First/Find/Where 查询，看控制台（需本地库）")
 		return
 	}
 	switch os.Args[1] {
@@ -122,6 +124,8 @@ func main() {
 		practise.GinDBDeleteDemo()
 	case "ormcreate":
 		practise.OrmCreateDemo()
+	case "ormquery":
+		practise.OrmQueryDemo()
 	default:
 		fmt.Println("未知 demo:", os.Args[1])
 	}
