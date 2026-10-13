@@ -110,6 +110,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | --- | --- | --- | --- |
 | 9.1.1 | `OrmCreate.go` | `OrmCreateDemo()` | model + AutoMigrate 建表 + Create 新增 demo，需本地库 |
 | 9.1.2 | `OrmQuery.go` | `OrmQueryDemo()` | First 单条 + Find 全表 + Where 条件查询 demo，需本地库 |
+| 9.1.3 | `OrmUpdate.go` | `OrmUpdateDemo()` | Update 单字段 + Updates struct/map 零值对比 demo，需本地库 |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -360,6 +361,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // OrmQuery.go OrmQueryDemo() First 单条 + Find 全表 + Where 条件查询 demo
 // go run ./cmd/demo ormquery，输出 查询单条 / 查询全部 / 年龄大于22
+
+// OrmUpdate.go OrmUpdateDemo() Update 单字段 + Updates struct/map 零值对比 demo
+// go run ./cmd/demo ormupdate，struct 版 age:0 不生效仍是 23，map 版 age 变 0
 ```
 ```
 
@@ -402,6 +406,7 @@ go run ./cmd/demo gindbupdate  # PUT JSON 到 :8096 /user/1 -> 改库并回 user
 go run ./cmd/demo gindbdelete  # DELETE :8097 /user/1 -> 删除成功 / 404 用户不存在
 go run ./cmd/demo ormcreate   # 控制台输出 数据库连接成功 + 新增用户ID + 影响行数
 go run ./cmd/demo ormquery    # 控制台输出 查询单条 + 查询全部 + 年龄大于22
+go run ./cmd/demo ormupdate   # 控制台输出 新增用户 + 影响行数 + Struct 修改后 + 最终用户
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
