@@ -30,7 +30,6 @@
 //	go run ./cmd/demo ormquery	# 跑 OrmQueryDemo，First/Find/Where 查询，控制台直接输出
 //	go run ./cmd/demo ormupdate	# 跑 OrmUpdateDemo，Update/Updates 改字段，控制台直接输出
 //	go run ./cmd/demo ormdelete	# 跑 OrmDeleteDemo，Delete 按 ID 删，控制台直接输出
-//	go run ./cmd/demo ormpage	# 跑 OrmPageDemo，Where+Order+Limit/Offset 分页，控制台直接输出
 //	go run ./cmd/demo ormorder	# 跑 OrmOrderDemo，Where 条件 + Order 排序，控制台直接输出
 package main
 
@@ -42,7 +41,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate|gindbdelete|ormcreate|ormquery|ormupdate|ormdelete|ormpage|ormorder]")
+		fmt.Println("用法: go run ./cmd/demo [server|user|userstatus|usermethod|userauth|userbody|userjson|clientget|clienttimeout|ginuser|ginquery|ginparam|ginbind|ginauth|gingroup|ginuserid|dbping|dbqueryrow|dbquery|dbexec|dbupdate|dbdelete|gindbuser|gindbinsert|gindbupdate|gindbdelete|ormcreate|ormquery|ormupdate|ormdelete|ormorder]")
 		fmt.Println("  server     -> practise.ServerDemo()     :8080 /")
 		fmt.Println("  user       -> practise.UserDemo()       :8081 /user")
 		fmt.Println("  userstatus -> practise.UserStatusDemo() :8082 /user")
@@ -73,7 +72,6 @@ func main() {
 		fmt.Println("  ormquery -> practise.OrmQueryDemo() GORM First/Find/Where 查询，看控制台（需本地库）")
 		fmt.Println("  ormupdate -> practise.OrmUpdateDemo() GORM Update/Updates 改字段，看控制台（需本地库）")
 		fmt.Println("  ormdelete -> practise.OrmDeleteDemo() GORM Delete 按 ID 删，看控制台（需本地库）")
-		fmt.Println("  ormpage -> practise.OrmPageDemo() GORM 条件+排序+分页，看控制台（需本地库）")
 		fmt.Println("  ormorder -> practise.OrmOrderDemo() GORM 条件+排序，看控制台（需本地库）")
 		return
 	}
@@ -138,8 +136,6 @@ func main() {
 		practise.OrmUpdateDemo()
 	case "ormdelete":
 		practise.OrmDeleteDemo()
-	case "ormpage":
-		practise.OrmPageDemo()
 	case "ormorder":
 		practise.OrmOrderDemo()
 	default:
