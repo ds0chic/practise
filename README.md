@@ -113,6 +113,7 @@ Go 泛型小练习：对照 [samber/lo](https://github.com/samber/lo) 复刻常�
 | 9.1.3 | `OrmUpdate.go` | `OrmUpdateDemo()` | Update 单字段 + Updates struct/map 零值对比 demo，需本地库 |
 | 9.1.4 | `OrmDelete.go` | `OrmDeleteDemo()` | Delete 按 ID 删 + 回删除行数 demo，需本地库 |
 | 9.1.5 | `OrmOrder.go` | `OrmOrderDemo()` | Where 条件 + Order 排序 demo，需本地库 |
+| 9.1.6 | `OrmTx.go` | `OrmTxDemo()` | Transaction 事务提交/回滚 demo，需本地库 |
 
 约定：遍历 / 组合类回调统一为 `func(value T, i int)`，`i` 为元素下标；`UniqBy` / `GroupBy` 按设计为 `func(value T) K`（只需按值取 key，无下标）。
 
@@ -372,6 +373,9 @@ practise.KeyBy([]string{"a", "aa", "aaa"}, func(s string) int {
 
 // OrmOrder.go OrmOrderDemo() Where 条件 + Order 排序 demo
 // go run ./cmd/demo ormorder，表空时先插 5 条，输出 age>20 按 age 倒序
+
+// OrmTx.go OrmTxDemo() Transaction 事务提交/回滚 demo
+// go run ./cmd/demo ormtx，成功输出 事务成功，已提交（Tom/Jack 入库），回调返回 err 则整体回滚
 ```
 ```
 
@@ -417,6 +421,7 @@ go run ./cmd/demo ormquery    # 控制台输出 查询单条 + 查询全部 + �
 go run ./cmd/demo ormupdate   # 控制台输出 新增用户 + 影响行数 + Struct 修改后 + 最终用户
 go run ./cmd/demo ormdelete   # 控制台输出 新增用户 + 删除行数: 1
 go run ./cmd/demo ormorder    # 控制台输出 age>20 按 age 倒序的用户列表
+go run ./cmd/demo ormtx       # 控制台输出 事务成功，已提交 / 事务失败，已回滚
 ```
 
 浏览器打开对应地址即可，每加一个 server Demo 就在 `cmd/demo/main.go` 加一行 case。
